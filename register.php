@@ -21,6 +21,7 @@ if($mysqli->connect_error){
     if($pass1 != $pass){
         echo"Password do not match!";
     }
+    else{
     $password = md5($pass);
     $q="INSERT INTO user (username,email,password) values ('$username','$email','$password')";
     
@@ -31,5 +32,6 @@ if($mysqli->connect_error){
         echo "Error in Saving!";
     }
     $mysqli->close();
+}
 
 ?>
