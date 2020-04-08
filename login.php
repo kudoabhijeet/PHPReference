@@ -15,11 +15,13 @@ if($mysqli->connect_error){
     $username = $_POST['username'];
     $password = md5($_POST['password']); 
 
-    $q1 = "SELECT * FROM user WHERE username = $username AND password = $password";
-    if (mysqli_num_rows($q1)==1){
+    $q1 = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1";
+    $res = mysqli_query($mysqli,$q1);
+    if (mysqli_num_rows($res) == 1){ //User found!
         echo "User Found!";
     }
     else {
         echo "User not found!";
+        //header('location: home.php');	
     }
     $mysqli->close(); 
