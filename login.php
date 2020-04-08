@@ -17,11 +17,12 @@ if($mysqli->connect_error){
 
     $q1 = "SELECT * FROM user WHERE username = '$username' AND password = '$password' LIMIT 1";
     $res = mysqli_query($mysqli,$q1);
-    if (mysqli_num_rows($res) == 1){ //User found!
+    if (mysqli_num_rows($res) == 1){    //User found!
         echo "User Found!";
+        //header('location: home.php');	
     }
     else {
         echo "User not found!";
-        //header('location: home.php');	
+        
     }
     $mysqli->close(); 
